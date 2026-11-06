@@ -1,0 +1,214 @@
+{
+  "site": {
+    "title": "星枢",
+    "subtitle": "星辰汇聚，一枢尽收",
+    "searchPlaceholder": "搜索站点名称、描述..."
+  },
+  "video": {
+    "passcodes": ["guchen"],
+    "lockTitle": "口令已锁，请输入口令",
+    "unlockHint": "口令不正确"
+  },
+  "backup": {
+    "title": "星枢 · 备用站点",
+    "url": "https://xnasmr.github.io/starhub/",
+    "desc": "GitHub Pages 镜像入口，主站异常时可由此进入",
+    "icon": "🛰️",
+    "group": "🚀 项目站点",
+    "footerText": "备用站点"
+  },
+  "footer": {
+    "icp": {
+      "text": "豫ICP备2025109368号-2",
+      "url": "https://beian.miit.gov.cn"
+    },
+    "security": {
+      "text": "豫公网安备41142402000649号",
+      "url": "http://www.beian.gov.cn"
+    },
+    "copyright": "© 2026 StarHub"
+  },
+  "calendar": {
+    "events": [
+      {
+        "id": 1,
+        "title": "国庆节",
+        "date": "2026-10-01",
+        "icon": "🇨🇳",
+        "repeat": "yearly"
+      },
+      {
+        "id": 2,
+        "title": "元旦",
+        "date": "2027-01-01",
+        "icon": "🎉",
+        "repeat": "yearly"
+      },
+      {
+        "id": 3,
+        "title": "春节",
+        "date": "2027-01-29",
+        "icon": "🧧",
+        "repeat": "yearly"
+      },
+      {
+        "id": 4,
+        "title": "清明节",
+        "date": "2026-04-05",
+        "icon": "🌿",
+        "repeat": "yearly"
+      },
+      {
+        "id": 5,
+        "title": "劳动节",
+        "date": "2026-05-01",
+        "icon": "💪",
+        "repeat": "yearly"
+      },
+      {
+        "id": 6,
+        "title": "端午节",
+        "date": "2026-05-31",
+        "icon": "🐲",
+        "repeat": "yearly"
+      },
+      {
+        "id": 7,
+        "title": "中秋节",
+        "date": "2026-09-27",
+        "icon": "🥮",
+        "repeat": "yearly"
+      },
+      {
+        "id": 8,
+        "title": "圣诞节",
+        "date": "2026-12-25",
+        "icon": "🎄",
+        "repeat": "yearly"
+      }
+    ]
+  },
+  "groups": [
+    {
+      "name": "🚀 项目站点",
+      "items": [
+        {
+          "title": "智行旅游",
+          "url": "https://www.traeai.online/",
+          "desc": "旅游企业一体化智能管理平台",
+          "icon": "assets/icons/zhixing-travel.svg"
+        },
+        {
+          "title": "CF小苹果",
+          "url": "https://www.xpgweb.com/",
+          "desc": "穿越火线游戏服务平台",
+          "icon": "assets/icons/cf-xpgame.svg"
+        },
+        {
+          "title": "AURORA WAVE",
+          "url": "http://music.traeai.online/",
+          "desc": "电子音乐人官方站点",
+          "icon": "assets/icons/aurora-wave.svg"
+        },
+        {
+          "title": "简账",
+          "url": "https://easybill.traeai.online/",
+          "desc": "个人记账系统",
+          "icon": "assets/icons/easybill.svg"
+        }
+      ]
+    },
+    {
+      "name": "🛠️ 开发工具",
+      "items": [
+        {
+          "title": "GitHub",
+          "url": "https://github.com",
+          "desc": "代码托管与协作平台",
+          "icon": "🐙"
+        },
+        {
+          "title": "VS Code",
+          "url": "https://code.visualstudio.com",
+          "desc": "轻量级代码编辑器",
+          "icon": "💻"
+        },
+        {
+          "title": "CodePen",
+          "url": "https://codepen.io",
+          "desc": "前端代码在线编辑器",
+          "icon": "✏️"
+        },
+        {
+          "title": "Can I Use",
+          "url": "https://caniuse.com",
+          "desc": "浏览器兼容性查询",
+          "icon": "🔍"
+        }
+      ]
+    },
+    {
+      "name": "📖 知识库",
+      "items": [
+        {
+          "title": "MDN Web Docs",
+          "url": "https://developer.mozilla.org",
+          "desc": "Web开发权威文档",
+          "icon": "📖"
+        },
+        {
+          "title": "掘金",
+          "url": "https://juejin.cn",
+          "desc": "开发者技术社区",
+          "icon": "⛏️"
+        },
+        {
+          "title": "Stack Overflow",
+          "url": "https://stackoverflow.com",
+          "desc": "技术问答社区",
+          "icon": "💬"
+        }
+      ]
+    },
+    {
+      "name": "🎨 设计资源",
+      "items": [
+        {
+          "title": "Figma",
+          "url": "https://www.figma.com",
+          "desc": "在线协作设计工具",
+          "icon": "🎨"
+        },
+        {
+          "title": "Dribbble",
+          "url": "https://dribbble.com",
+          "desc": "设计师作品展示平台",
+          "icon": "🏀"
+        },
+        {
+          "title": "Unsplash",
+          "url": "https://unsplash.com",
+          "desc": "免费高清图片素材",
+          "icon": "📸"
+        }
+      ]
+    },
+    {
+      "name": "🔧 运维工具",
+      "items": [
+        {
+          "title": "阿里云",
+          "url": "https://www.aliyun.com",
+          "desc": "云计算服务提供商",
+          "icon": "☁️"
+        },
+        {
+          "title": "宝塔面板",
+          "url": "https://www.bt.cn",
+          "desc": "服务器管理面板",
+          "icon": "🖥️"
+        }
+      ]
+    }
+  ]
+}

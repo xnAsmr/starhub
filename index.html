@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="星枢 - 个人开发者专属静态导航分发工作台，星辰汇聚，一枢尽收">
+  <meta name="keywords" content="导航,工作台,开发工具,个人主页">
+  <meta name="theme-color" content="#05070F">
+  <title>星枢 | 工作台导航</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="assets/img/galaxy-bg.jpg?v=5.2">
+  <link rel="preload" as="image" href="assets/img/avatar.jpg?v=5.2">
+  <link rel="stylesheet" href="assets/style.css?v=6.1">
+  <script data-title="StarhubBot" src="https://cloud.langbot.app/api/v1/embed/3d07f70d-1c07-458a-949a-9e85a00e2a1e/widget.js"></script>
+</head>
+<body>
+  <!-- 背景舞台：静态动漫星空图 + CSS 动效（星点闪烁、极光漂移、流星） -->
+  <div class="bg-stage" aria-hidden="true">
+    <div class="bg-image"></div>
+    <!-- 若改用视频背景：删除上面的 .bg-image，取消下面这行注释
+    <video class="bg-video" src="assets/img/bg-loop.mp4" autoplay muted loop playsinline></video>
+    -->
+    <div class="bg-aurora"></div>
+    <div class="bg-stars"></div>
+    <span class="bg-shoot"></span>
+    <span class="bg-shoot bg-shoot--2"></span>
+    <div class="bg-scrim"></div>
+    <div class="bg-vignette"></div>
+  </div>
+
+  <!-- 顶部栏 -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="./" aria-label="星枢首页">
+        <img class="brand-logo" src="favicon.svg" alt="星枢">
+        <span class="brand-name">星枢<em>STARHUB</em></span>
+      </a>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <!-- 头像 Hero -->
+    <section class="hero" id="hero">
+      <div class="hero-inner">
+        <div class="avatar-wrap">
+          <span class="avatar-halo" aria-hidden="true"></span>
+          <span class="avatar-ring" aria-hidden="true"></span>
+          <img class="avatar" src="assets/img/avatar.jpg?v=5.2" alt="星枢头像">
+          <span class="avatar-badge" aria-hidden="true">✦</span>
+        </div>
+
+        <p class="hero-eyebrow"><span></span>PERSONAL WORKSPACE<span></span></p>
+        <h1 class="header-title">星枢</h1>
+        <p class="header-subtitle">星辰汇聚，一枢尽收</p>
+
+        <!-- 搜索框组件 -->
+        <section class="search-section">
+          <div class="search-wrapper">
+            <input
+              type="text"
+              class="search-box"
+              id="searchBox"
+              placeholder="搜索站点名称、描述..."
+              autocomplete="off"
+            >
+            <kbd class="search-kbd">⌘K</kbd>
+          </div>
+          <div class="search-stats" id="searchStats"></div>
+        </section>
+
+        <!-- 常用站点快捷置顶 -->
+        <section class="quick-links" id="quickLinks" style="display: none;"></section>
+      </div>
+
+      <a class="scroll-cue" href="#sites" aria-label="向下浏览站点">
+        <span class="scroll-cue-text">向下探索</span>
+        <span class="scroll-cue-line"></span>
+      </a>
+    </section>
+
+    <!-- 主体：站点卡片 + 右侧悬浮坞 -->
+    <div class="layout" id="sites">
+      <div class="main-area">
+        <div class="container">
+          <!-- 分组锚点导航条 -->
+          <nav class="group-nav" id="groupNav" style="display: none;"></nav>
+
+          <!-- 内容区域 -->
+          <main class="content" id="content">
+            <!-- 动态渲染 -->
+          </main>
+        </div>
+      </div>
+
+      <!-- 右栏：悬浮玻璃坞（日历 + 倒计时） -->
+      <aside class="calendar-sidebar" id="calendarSidebar">
+        <div class="calendar-panel">
+          <div class="calendar-nav">
+            <button class="calendar-nav-btn" id="prevMonth" aria-label="上一月">‹</button>
+            <span class="calendar-month" id="calendarMonth"></span>
+            <button class="calendar-nav-btn" id="nextMonth" aria-label="下一月">›</button>
+            <button class="calendar-today-btn" id="calendarTodayBtn" aria-label="回到今天">今天</button>
+          </div>
+          <div class="calendar-weekdays">
+            <span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span>
+          </div>
+          <div class="calendar-days" id="calendarDays"></div>
+          <div class="calendar-legend">
+            <div id="cycleLegend"></div>
+          </div>
+        </div>
+
+        <!-- 倒计时面板（可折叠） -->
+        <div class="events-panel" id="eventsPanel">
+          <div class="events-header" id="eventsHeader">
+            <h4>⏳ 倒计时</h4>
+            <div class="events-header-actions">
+              <button class="settings-btn" id="settingsBtn" aria-label="设置">⚙️</button>
+              <button class="collapse-btn" id="collapseBtn" aria-label="折叠">▾</button>
+            </div>
+          </div>
+          <div class="events-body" id="eventsBody">
+            <div class="events-list" id="eventsList"></div>
+
+            <!-- 周期设置面板 -->
+            <div class="cycle-settings" id="cycleSettings" style="display: none;">
+              <h4>🔄 周期设置</h4>
+              <p class="settings-tip">每 N 天为一个颜色块，两种颜色交替循环，保存后覆盖原周期</p>
+              <div class="settings-form">
+                <div class="form-group">
+                  <label for="cycleName">周期名称</label>
+                  <input type="text" id="cycleName" placeholder="如：默认周期" />
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="startDate">起始日期</label>
+                    <input type="date" id="startDate" />
+                  </div>
+                  <div class="form-group">
+                    <label for="periodDays">周期天数</label>
+                    <input type="number" id="periodDays" min="1" max="365" value="15" />
+                  </div>
+                </div>
+                <div class="form-actions">
+                  <button class="btn-save" id="saveCycle">保存</button>
+                  <button class="btn-cancel" id="cancelCycle">取消</button>
+                </div>
+              </div>
+              <div class="saved-cycles" id="savedCycles"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 热门视频（位于倒计时下方） -->
+        <aside class="video-sidebar" id="videoSidebar">
+          <div class="video-panel">
+            <div class="video-panel-header">
+              <h4><span class="vp-dot" aria-hidden="true"></span>热门视频</h4>
+              <div class="video-panel-actions">
+                <button class="video-refresh-btn" id="videoRefreshBtn" aria-label="换一个">🔄</button>
+                <button class="video-immersive-btn" id="videoImmersiveBtn" aria-label="沉浸模式">⛶</button>
+              </div>
+            </div>
+            <div class="video-container" id="videoContainer">
+              <video id="videoPlayer" class="video-player" controls loop playsinline preload="none"></video>
+              <div class="video-loading hidden" id="videoLoading">加载中...</div>
+              <button class="video-play-overlay hidden" id="videoPlayOverlay" aria-label="播放视频">
+                <span class="vpo-icon">▶</span>
+                <span class="vpo-label">点击播放</span>
+              </button>
+              <form class="video-lock hidden" id="videoLock" autocomplete="off">
+                <span class="vl-icon" aria-hidden="true">🔒</span>
+                <p class="vl-title">口令已锁，请输入口令</p>
+                <input class="vl-input" id="videoLockInput" type="password" autocomplete="off"
+                  autocapitalize="off" spellcheck="false" placeholder="口令" aria-label="观看口令">
+                <button class="vl-submit" type="submit">进入</button>
+                <p class="vl-tip hidden" id="videoLockTip">口令不正确</p>
+              </form>
+            </div>
+          </div>
+        </aside>
+      </aside>
+    </div>
+  </main>
+
+  <!-- 页脚 - 备案信息（由 sites.json 配置） -->
+  <footer class="footer">
+    <div class="container" id="footer">
+      <!-- 动态渲染 -->
+    </div>
+  </footer>
+
+  <!-- 视频沉浸模式（全屏覆盖） -->
+  <div class="immersive-overlay" id="immersiveOverlay" style="display: none;">
+    <div class="immersive-header">
+      <span class="immersive-title">🎬 热门视频 · 沉浸模式</span>
+      <div class="immersive-actions">
+        <button class="immersive-btn" id="immersiveRefreshBtn">🔄 换一个</button>
+        <button class="immersive-btn immersive-btn-close" id="immersiveCloseBtn" aria-label="退出沉浸模式">✕ 退出</button>
+      </div>
+    </div>
+    <div class="immersive-stage" id="immersiveStage">
+      <!-- 进入沉浸时把 #videoContainer 整体移入，退出时移回原位 -->
+    </div>
+    <div class="immersive-hint" id="immersiveHint">按 Esc 退出沉浸模式</div>
+  </div>
+
+  <button class="back-top" id="backTop" aria-label="回到顶部" style="display: none;">↑</button>
+
+  <script src="assets/main.js?v=6.1"></script>
+</body>
+</html>

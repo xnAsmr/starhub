@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <defs>
+    <linearGradient id="appleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22C55E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16A34A;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="40" height="40" rx="10" fill="url(#appleGrad)"/>
+  <path d="M20 8C20 8 22 6 24 8C26 10 24 12 24 12C24 12 28 10 30 14C32 18 28 20 28 20L28 28C28 30 26 32 20 32C14 32 12 30 12 28L12 20C12 20 8 18 10 14C12 10 16 12 16 12C16 12 14 10 16 8C18 6 20 8 20 8Z" fill="#FFFFFF"/>
+</svg>
